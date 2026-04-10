@@ -3,6 +3,9 @@ Genera o actualiza el reporte diario en la página semanal de Notion usando la s
 ## Instrucciones
 
 - Recuperá contexto desde GitHub, Engram y archivos del repositorio.
+- Buscá primero en Engram las observaciones del día.
+- Mostrale al usuario las observaciones encontradas y preguntale cuáles quiere usar para el reporte antes de seguir.
+- Preguntale también en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub antes de correrlos.
 - Redactá el reporte diario con el formato establecido.
 - Detectá si Notion está disponible.
 - Si Notion está disponible, actualizá la página semanal vigente o creala si no existe.

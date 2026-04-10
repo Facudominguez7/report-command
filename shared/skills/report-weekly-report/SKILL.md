@@ -24,6 +24,9 @@ Crear o actualizar la entrada del día usando un backend dual:
 
 - **NUNCA** crear una página por día.
 - **SIEMPRE** trabajar sobre una página semanal; si no existe, crearla.
+- **SIEMPRE** buscar primero en Engram las observaciones del día antes de redactar el reporte.
+- **SIEMPRE** mostrar al usuario las observaciones del día encontradas y preguntarle cuáles quiere usar para el reporte antes de continuar.
+- **SIEMPRE** preguntarle al usuario en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub antes de correrlos.
 - **SIEMPRE** intentar Notion primero y, si no está disponible, hacer fallback automático a Markdown local.
 - **SIEMPRE** guardar el fallback local dentro de `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/` en la raíz del repositorio.
 - **SIEMPRE** crear `README.md` semanal si no existe y agregar allí el link al día generado.
@@ -36,12 +39,15 @@ Crear o actualizar la entrada del día usando un backend dual:
 
 ## Workflow obligatorio
 
-1. Recuperar contexto del día desde GitHub, Engram y archivos del repo.
-2. Redactar la entrada diaria con el formato establecido en la plantilla.
-3. Detectar si Notion está disponible en la sesión actual.
-4. Si Notion está disponible, buscar la página semanal vigente y crearla si no existe.
-5. Si Notion no está disponible, crear o actualizar el archivo local `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md` y asegurar `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/README.md`.
-6. Confirmar éxito indicando el destino usado, sin devolver el texto completo.
+1. Buscar en Engram las observaciones del día y recuperar el contexto relevante.
+2. Mostrar las observaciones encontradas al usuario y preguntarle cuáles quiere usar para el reporte.
+3. Preguntarle al usuario en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub.
+4. Recién después de la respuesta del usuario, completar el relevamiento complementario en GitHub y archivos del repo.
+5. Redactar la entrada diaria con el formato establecido en la plantilla.
+6. Detectar si Notion está disponible en la sesión actual.
+7. Si Notion está disponible, buscar la página semanal vigente y crearla si no existe.
+8. Si Notion no está disponible, crear o actualizar el archivo local `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md` y asegurar `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/README.md`.
+9. Confirmar éxito indicando el destino usado, sin devolver el texto completo.
 
 ## Referencias
 
