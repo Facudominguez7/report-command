@@ -9,6 +9,6 @@
 ## 0.1.0
 
 - Scaffold inicial del repositorio.
-- Skill compartida `report-weekly-report`.
+- Skill compartida `internal-weekly-report`.
 - Comandos base para Claude Code y OpenCode.
 - Scripts iniciales de instalación, sincronización y actualización.

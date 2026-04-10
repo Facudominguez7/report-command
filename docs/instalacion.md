@@ -52,12 +52,12 @@ Qué hace:
 ### Claude Code
 
 - `~/.claude/commands/report.md`
-- `~/.claude/skills/report-weekly-report/SKILL.md`
+- `~/.claude/skills/internal-weekly-report/SKILL.md`
 
 ### OpenCode
 
 - `~/.config/opencode/commands/report.md`
-- `~/.config/opencode/skills/report-weekly-report/SKILL.md`
+- `~/.config/opencode/skills/internal-weekly-report/SKILL.md`
 - `~/.config/opencode/plugins/report-auto-update.js`
 
 ## Verificación rápida

@@ -7,7 +7,7 @@ Distribución compartida del comando `/report` para **Claude Code** y **OpenCode
 Este repositorio concentra una única fuente de verdad para:
 
 - el comando `/report`,
-- la skill `report-weekly-report`,
+- la skill interna `internal-weekly-report`,
 - los adaptadores para Claude Code y OpenCode,
 - los scripts de instalación y actualización automática.
 

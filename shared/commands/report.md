@@ -1,4 +1,4 @@
-Genera o actualiza el reporte diario en la página semanal de Notion usando la skill `report-weekly-report` y, si Notion no está disponible, hace fallback automático a Markdown local.
+Genera o actualiza el reporte diario en la página semanal de Notion usando la skill `internal-weekly-report` y, si Notion no está disponible, hace fallback automático a Markdown local.
 
 ## Instrucciones
 

@@ -1,8 +1,8 @@
 ---
-name: report-weekly-report
+name: internal-weekly-report
 description: >
   Genera o actualiza el reporte diario en la página semanal de Notion y, si Notion no está disponible, lo guarda en Markdown local.
-  Trigger: cuando el usuario escriba el comando "/report".
+  Trigger: uso interno del comando "/report".
 license: Apache-2.0
 metadata:
   author: relex
@@ -11,7 +11,7 @@ metadata:
 
 ## Cuándo usar
 
-Únicamente cuando el usuario escribe el comando explícito `/report`.
+Uso interno del comando `/report`. No debe invocarse manualmente como comando de usuario.
 
 ## Objetivo
 
@@ -53,5 +53,5 @@ Crear o actualizar la entrada del día usando un backend dual:
 
 - `shared/docs/reporte_diario_template.md`
 - `shared/docs/reporte_markdown_local.md`
-- `shared/prompts/opencode/report-weekly-report.md`
+- `shared/prompts/opencode/internal-weekly-report.md`
 - `reportes/`

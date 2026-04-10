@@ -1,6 +1,6 @@
 # Plantilla: Reporte Diario (Notion o Markdown local)
 
-> Archivo de referencia para la skill `report-weekly-report`.
+> Archivo de referencia para la skill `internal-weekly-report`.
 > Reemplazá los bloques entre `{{ }}` con el contenido real del día.
 > No modificar la estructura de secciones ni el orden de los bloques.
 > Esta plantilla aplica tanto para Notion como para el archivo Markdown local de fallback.

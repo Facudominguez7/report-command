@@ -14,7 +14,7 @@ function Copiar-ArchivoAdministrado {
 }
 
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/claude/commands/report.md") (Join-Path $HOME ".claude/commands/report.md")
-Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/report-weekly-report/SKILL.md") (Join-Path $HOME ".claude/skills/report-weekly-report/SKILL.md")
+Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/internal-weekly-report/SKILL.md") (Join-Path $HOME ".claude/skills/internal-weekly-report/SKILL.md")
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/opencode/commands/report.md") (Join-Path $HOME ".config/opencode/commands/report.md")
-Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/report-weekly-report/SKILL.md") (Join-Path $HOME ".config/opencode/skills/report-weekly-report/SKILL.md")
+Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/internal-weekly-report/SKILL.md") (Join-Path $HOME ".config/opencode/skills/internal-weekly-report/SKILL.md")
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/opencode/plugins/report-auto-update.js") (Join-Path $HOME ".config/opencode/plugins/report-auto-update.js")
