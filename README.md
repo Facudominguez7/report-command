@@ -86,26 +86,6 @@ notion-report-command/
 
 Ver guía completa en `docs/instalacion.md`.
 
-## Instalación inmediata mientras no esté publicada
-
-Si todavía no subiste `notion-report-command` a GitHub como repo propio, podés instalarlo desde el checkout local actual.
-
-### Linux
-
-```bash
-bash scripts/install-local.sh
-```
-
-### Windows
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\install-local.ps1
-```
-
-Esto sincroniza `/notion` en Claude/OpenCode y deja preparada la carpeta `reportes/` para el fallback Markdown.
-
-## Instalación objetivo cuando esté publicada
-
 ### Linux
 
 ```bash
