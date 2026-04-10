@@ -82,15 +82,7 @@ notion-report-command/
 └── .gitignore
 ```
 
-## Próximos pasos sugeridos
-
-1. Validar el comportamiento exacto del fallback Markdown sobre una instalación limpia.
-2. Probar `scripts/sync.sh` y `scripts/sync.ps1` sobre una instalación limpia.
-3. Completar la registración automática del hook de Claude Code.
-4. Endurecer el updater para manejo de errores, lock y logs.
-5. Probar el flujo en Linux y Windows con y sin Notion configurado.
-
-## Instalación objetivo
+## Instalación
 
 Ver guía completa en `docs/instalacion.md`.
 
