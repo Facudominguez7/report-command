@@ -16,10 +16,12 @@ Genera o actualiza el reporte diario en Notion o Markdown local siguiendo el wor
 - **MOSTRAR al usuario las observaciones encontradas y PREGUNTAR cuáles quiere usar antes de continuar.**
 - No avanzar sin la respuesta del usuario.
 
-### Paso 1.5 — Confirmar Carpeta de Trabajo
+### Paso 1.5 — Confirmar Carpetas de Trabajo
 
-- **PREGUNTAR al usuario en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub antes de correrlos.**
-- Esperar su respuesta. Usar exactamente esa ubicación para todos los comandos git.
+- **PREGUNTAR al usuario en qué carpeta quiere ejecutar los comandos de Git/GitHub.**
+- **PREGUNTAR al usuario en qué carpeta quiere que se guarden los reportes locales** (solo si el backend es Markdown).
+  - Si ya existe una carpeta `reportes/` en la ubicación, informar y preguntar si quiere seguir ahí o elegir otra.
+  - Si no existe, confirmar la ruta donde se va a crear.
 
 ### Paso 2 — Relevamiento Complementario
 
@@ -36,7 +38,7 @@ Genera o actualiza el reporte diario en Notion o Markdown local siguiendo el wor
 
 - Intentar Notion primero.
 - Si Notion está disponible, buscar la página semanal vigente o crearla.
-- Si Notion no está disponible, usar Markdown local en `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md`.
+- Si Notion no está disponible, **preguntar al usuario en qué carpeta guardar los reportes**. Si ya existe una carpeta `reportes/`, confirmar si quiere seguir usándola o elegir otra. Usar la ruta confirmada en `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md`.
 - Reemplazar o agregar la entrada del día sin duplicar fechas.
 - Si se usa Markdown local, reemplazar el archivo completo del día si ya existe.
 - No modificar entradas de días anteriores.
@@ -55,4 +57,4 @@ Si cualquier check falla, **rehacer el texto antes de persistir**.
 
 ### Paso 5 — Confirmar
 
-Confirmar éxito sin devolver el texto completo del reporte. Indicar si el destino fue Notion o la ruta del archivo local.
+Confirmar éxito sin devolver el texto completo del reporte. **Siempre especificar la ubicación exacta**: si fue Notion, indicar la página; si fue Markdown local, indicar la ruta completa del archivo.

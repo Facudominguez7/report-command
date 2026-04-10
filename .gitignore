@@ -4,3 +4,4 @@ logs/
 *.tmp
 Thumbs.db
 .DS_Store
+reportes/

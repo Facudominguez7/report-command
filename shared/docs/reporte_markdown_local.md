@@ -24,11 +24,15 @@ reportes/
 
 ## Reglas obligatorias
 
-- Crear una carpeta por semana con formato `semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}`.
+- **Preguntar al usuario** en qué carpeta quiere guardar los reportes antes de escribir nada.
+- Si ya existe una carpeta `reportes/` en la ubicación propuesta, informar al usuario y preguntar si quiere seguir guardando ahí o elegir otra ubicación.
+- Si no existe, confirmar la ruta completa donde se va a crear y esperar aprobación.
+- Crear una carpeta por semana con formato `semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}` dentro de la ruta confirmada.
 - Crear un archivo por día con formato `YYYY-MM-DD-dia.md`.
 - Si el archivo del día ya existe, reemplazar su contenido completo.
 - No modificar archivos de días anteriores.
 - Crear `README.md` semanal si no existe.
+- **Siempre especificar** en la confirmación la ruta completa del archivo generado.
 
 ## Template del README semanal
 

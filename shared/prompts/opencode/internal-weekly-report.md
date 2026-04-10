@@ -75,13 +75,15 @@ Antes de redactar nada, recuperar TODO el contexto disponible del día:
 
 No sigas con la redacción ni con la persistencia final hasta que el usuario responda.
 
-### Paso 1.5 — Confirmar Carpeta de Trabajo para Git/GitHub
+### Paso 1.5 — Confirmar Carpetas de Trabajo
 
-Antes de correr cualquier comando de Git o GitHub:
+Antes de correr cualquier comando o persistir nada:
 
-1. **PREGUNTAR al usuario** en qué carpeta o repositorio quiere que se ejecuten esos comandos.
-2. Esperar su respuesta.
-3. Usar exactamente esa ubicación para `git status`, `git diff`, `git branch`, `git log` y cualquier otro comando relacionado.
+1. **PREGUNTAR al usuario** en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub.
+2. **PREGUNTAR al usuario** en qué carpeta quiere que se guarden los reportes locales (solo si el backend es Markdown).
+   - Si ya existe una carpeta `reportes/` en algún lugar propuesto, informar que existe y preguntar si quiere seguir guardando ahí o elegir otra ubicación.
+   - Si no existe, confirmar la ruta donde se va a crear.
+3. Esperar las respuestas del usuario antes de continuar.
 
 ### Paso 2 — Relevamiento Complementario
 
@@ -139,10 +141,14 @@ Secciones obligatorias **en este orden**:
   ```
 
 **Si Notion no está disponible**:
-- Trabajar en la raíz del repositorio confirmado.
-- Crear la carpeta `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/` si no existe.
-- Crear `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/README.md` si no existe y agregar el link del día.
-- Crear o actualizar el archivo `reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md`.
+- Usar la carpeta confirmada por el usuario en el Paso 1.5.
+- Si el usuario no especificó una carpeta, proponer la raíz del repositorio y confirmar antes de escribir.
+- Verificar si ya existe una carpeta `reportes/` en la ubicación elegida.
+  - Si existe: informar al usuario y preguntar si quiere seguir usando esa carpeta o elegir otra.
+  - Si no existe: confirmar la ruta completa donde se va a crear y esperar aprobación.
+- Crear la carpeta `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/` si no existe.
+- Crear `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/README.md` si no existe y agregar el link del día.
+- Crear o actualizar el archivo `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md`.
 - Si el archivo del día ya existe, reemplazar su contenido completo.
 - No modificar archivos de días anteriores.
 - Usar `shared/docs/reporte_markdown_local.md` como referencia obligatoria del formato.
@@ -163,7 +169,10 @@ Si cualquiera de estos checks falla, **rehacer el texto antes de persistir**.
 
 El sub-agente confirma al orquestador que la actualización se realizó correctamente.
 
-**No devolver el texto completo en el chat** — solo la confirmación de éxito y, opcionalmente, el destino usado (Notion o ruta del archivo local).
+**No devolver el texto completo en el chat** — solo la confirmación de éxito especificando **siempre** la ubicación exacta:
+
+- Si se usó Notion: indicar el título o URL de la página semanal.
+- Si se usó Markdown local: indicar la ruta completa del archivo generado (ej: `/home/usuario/proyecto/reportes/semana-2026-04-06_a_2026-04-12/2026-04-10-jueves.md`).
 
 ---
 
