@@ -17,7 +17,7 @@ Genera o actualiza el reporte diario en la página semanal de Notion y, si Notio
 
 - Bloque 1: status conversacional en primera persona.
 - Bloque 2: reporte técnico formal.
-- Referencia: `shared/docs/notion_reporte_diario_template.md`
+- Referencia: `shared/docs/reporte_diario_template.md`
 
 ### Paso 3 — Verificar Página de la Semana Actual
 

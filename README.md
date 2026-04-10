@@ -1,13 +1,13 @@
-# notion-report-command
+# report-command
 
-Distribución compartida del comando `/notion` para **Claude Code** y **OpenCode**.
+Distribución compartida del comando `/report` para **Claude Code** y **OpenCode**.
 
 ## Propósito
 
 Este repositorio concentra una única fuente de verdad para:
 
-- el comando `/notion`,
-- la skill `notion-weekly-report`,
+- el comando `/report`,
+- la skill `report-weekly-report`,
 - los adaptadores para Claude Code y OpenCode,
 - los scripts de instalación y actualización automática.
 
@@ -33,7 +33,7 @@ Además incluye instalación desde checkout local para usar la herramienta antes
 
 ## Fallback local a Markdown
 
-Cuando Notion no está disponible, `/notion` debe persistir el reporte en la raíz del repo con esta estructura:
+Cuando Notion no está disponible, `/report` debe persistir el reporte en la raíz del repo con esta estructura:
 
 ```text
 reportes/
@@ -65,7 +65,7 @@ La especificación del formato local quedó documentada en:
 ## Estructura
 
 ```text
-notion-report-command/
+report-command/
 ├── adapters/
 │   ├── claude/
 │   └── opencode/
@@ -89,13 +89,13 @@ Ver guía completa en `docs/instalacion.md`.
 ### Linux
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/relexsrl/notion-report-command/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/relexsrl/report-command/main/scripts/install.sh | bash
 ```
 
 ### Windows
 
 ```powershell
-irm https://raw.githubusercontent.com/relexsrl/notion-report-command/main/scripts/install.ps1 | iex
+irm https://raw.githubusercontent.com/relexsrl/report-command/main/scripts/install.ps1 | iex
 ```
 
-> Nota: el repositorio es privado. El usuario debe tener acceso GitHub/SSH configurado.
+> Nota: el repositorio es público. Solo necesitás `git` y acceso a GitHub para descargarlo.

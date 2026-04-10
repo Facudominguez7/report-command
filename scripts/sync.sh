@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RAIZ="${NOTION_REPORT_HOME:-$HOME/.relex/notion-report-command}"
+RAIZ="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
 
 crear_link_o_copia() {
   origen="$1"
@@ -15,11 +15,11 @@ crear_link_o_copia() {
 }
 
 main() {
-  crear_link_o_copia "$RAIZ/adapters/claude/commands/notion.md" "$HOME/.claude/commands/notion.md"
-  crear_link_o_copia "$RAIZ/shared/skills/notion-weekly-report/SKILL.md" "$HOME/.claude/skills/notion-weekly-report/SKILL.md"
-  crear_link_o_copia "$RAIZ/adapters/opencode/commands/notion.md" "$HOME/.config/opencode/commands/notion.md"
-  crear_link_o_copia "$RAIZ/shared/skills/notion-weekly-report/SKILL.md" "$HOME/.config/opencode/skills/notion-weekly-report/SKILL.md"
-  crear_link_o_copia "$RAIZ/adapters/opencode/plugins/notion-auto-update.js" "$HOME/.config/opencode/plugins/notion-auto-update.js"
+  crear_link_o_copia "$RAIZ/adapters/claude/commands/report.md" "$HOME/.claude/commands/report.md"
+  crear_link_o_copia "$RAIZ/shared/skills/report-weekly-report/SKILL.md" "$HOME/.claude/skills/report-weekly-report/SKILL.md"
+  crear_link_o_copia "$RAIZ/adapters/opencode/commands/report.md" "$HOME/.config/opencode/commands/report.md"
+  crear_link_o_copia "$RAIZ/shared/skills/report-weekly-report/SKILL.md" "$HOME/.config/opencode/skills/report-weekly-report/SKILL.md"
+  crear_link_o_copia "$RAIZ/adapters/opencode/plugins/report-auto-update.js" "$HOME/.config/opencode/plugins/report-auto-update.js"
 }
 
 main "$@"

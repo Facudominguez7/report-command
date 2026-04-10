@@ -1,10 +1,10 @@
 # Adaptador Claude Code
 
-Este directorio contiene los archivos que deben exponerse en `~/.claude/` para que el comando `/notion` funcione en Claude Code.
+Este directorio contiene los archivos que deben exponerse en `~/.claude/` para que el comando `/report` funcione en Claude Code.
 
 ## Archivos relevantes
 
-- `commands/notion.md` — comando visible como `/notion`
+- `commands/report.md` — comando visible como `/report`
 - `settings.local.fragment.json` — fragmento base para registrar el hook de auto-update
 
 ## Nota

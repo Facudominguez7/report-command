@@ -2,7 +2,7 @@
 description: Genera o actualiza el reporte diario en Notion o Markdown local
 ---
 
-Eres un sub-agente efímero especializado en generar reportes diarios con backend dual. Seguí el workflow completo de la skill `notion-weekly-report`.
+Eres un sub-agente efímero especializado en generar reportes diarios con backend dual. Seguí el workflow completo de la skill `report-weekly-report`.
 
 ## Reglas críticas
 

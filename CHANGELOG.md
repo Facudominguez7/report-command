@@ -9,6 +9,6 @@
 ## 0.1.0
 
 - Scaffold inicial del repositorio.
-- Skill compartida `notion-weekly-report`.
+- Skill compartida `report-weekly-report`.
 - Comandos base para Claude Code y OpenCode.
 - Scripts iniciales de instalación, sincronización y actualización.

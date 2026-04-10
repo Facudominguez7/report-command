@@ -1,8 +1,8 @@
 param()
 
 $ErrorActionPreference = "Stop"
-$repo = if ($env:REPO_SSH) { $env:REPO_SSH } else { "git@github.com:relexsrl/notion-report-command.git" }
-$destino = if ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/notion-report-command" }
+$repo = if ($env:REPO_SSH) { $env:REPO_SSH } else { "git@github.com:relexsrl/report-command.git" }
+$destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/report-command" }
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     throw "Falta git en el sistema."
@@ -17,4 +17,4 @@ if (Test-Path (Join-Path $destino ".git")) {
 }
 
 powershell -ExecutionPolicy Bypass -File (Join-Path $destino "scripts/sync.ps1")
-Write-Host "notion-report-command instalado en $destino"
+Write-Host "report-command instalado en $destino"

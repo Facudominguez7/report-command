@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Cuando `/notion` no pueda usar Notion, debe dejar el reporte persistido localmente en un formato estable, versionable y fácil de revisar por el equipo.
+Cuando `/report` no pueda usar Notion, debe dejar el reporte persistido localmente en un formato estable, versionable y fácil de revisar por el equipo.
 
 ## Estructura de carpetas
 
@@ -36,7 +36,7 @@ reportes/
 # Reportes semanales — Semana {{fecha_inicio}} a {{fecha_fin}}
 
 - Rango: {{fecha_inicio}} a {{fecha_fin}}
-- Backend: Markdown local (fallback de /notion)
+- Backend: Markdown local (fallback de /report)
 
 ## Días registrados
 

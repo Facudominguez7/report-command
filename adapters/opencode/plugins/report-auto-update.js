@@ -6,8 +6,8 @@ import os from "node:os"
 /**
  * Dispara una actualización silenciosa del repositorio al iniciar una sesión.
  */
-export const NotionAutoUpdatePlugin = async ({ client }) => {
-  const directorioInstalacion = process.env.NOTION_REPORT_HOME || path.join(os.homedir(), ".relex", "notion-report-command")
+export const ReportAutoUpdatePlugin = async ({ client }) => {
+  const directorioInstalacion = process.env.REPORT_COMMAND_HOME || process.env.NOTION_REPORT_HOME || path.join(os.homedir(), ".relex", "report-command")
   const scriptActualizacion = path.join(directorioInstalacion, "scripts", process.platform === "win32" ? "update.ps1" : "update.sh")
 
   const ejecutarActualizacion = async () => {
@@ -35,7 +35,7 @@ export const NotionAutoUpdatePlugin = async ({ client }) => {
       if (client?.app?.log) {
         await client.app.log({
           body: {
-            service: "notion-report-command",
+            service: "report-command",
             level: "info",
             message: "Chequeo silencioso de actualización lanzado",
           },

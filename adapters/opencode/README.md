@@ -1,11 +1,11 @@
 # Adaptador OpenCode
 
-Este directorio contiene los archivos que deben exponerse en `~/.config/opencode/` para que `/notion` funcione en OpenCode.
+Este directorio contiene los archivos que deben exponerse en `~/.config/opencode/` para que `/report` funcione en OpenCode.
 
 ## Archivos relevantes
 
-- `commands/notion.md` — comando visible como `/notion`
-- `plugins/notion-auto-update.js` — plugin base para disparar auto-update al inicio
+- `commands/report.md` — comando visible como `/report`
+- `plugins/report-auto-update.js` — plugin base para disparar auto-update al inicio
 
 ## Nota
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_SSH="${REPO_SSH:-git@github.com:relexsrl/notion-report-command.git}"
-DESTINO="${NOTION_REPORT_HOME:-$HOME/.relex/notion-report-command}"
+REPO_SSH="${REPO_SSH:-git@github.com:relexsrl/report-command.git}"
+DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
 
 crear_checkout() {
   mkdir -p "$(dirname "$DESTINO")"
@@ -18,7 +18,7 @@ main() {
   command -v git >/dev/null 2>&1 || { printf 'Falta git en el sistema.\n' >&2; exit 1; }
   crear_checkout
   bash "$DESTINO/scripts/sync.sh"
-  printf 'notion-report-command instalado en %s\n' "$DESTINO"
+  printf 'report-command instalado en %s\n' "$DESTINO"
 }
 
 main "$@"
