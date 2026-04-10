@@ -29,23 +29,38 @@ Este scaffold ya incluye:
 - scripts iniciales de `install`, `update` y `sync`,
 - configuración base para auto-update en ambas herramientas.
 
+Además incluye instalación desde checkout local para usar la herramienta antes de publicarla como repositorio independiente.
+
 ## Fallback local a Markdown
 
 Cuando Notion no está disponible, `/notion` debe persistir el reporte en la raíz del repo con esta estructura:
 
 ```text
 reportes/
-└── 2026/
-    └── semana-15/
-        └── 2026-04-09-jueves.md
+└── semana-2026-04-06_a_2026-04-12/
+    └── 2026-04-09-jueves.md
 ```
 
 Reglas del fallback:
 
 - un archivo por día,
-- agrupado por año y semana ISO,
+- agrupado por carpeta semanal con rango fecha a fecha,
+- un `README.md` por semana con links a los días cargados,
 - si el archivo del día ya existe, se reemplaza completo,
 - no se modifican archivos de días anteriores.
+
+Formato de ejemplo:
+
+```text
+reportes/
+└── semana-2026-04-06_a_2026-04-12/
+    ├── README.md
+    └── 2026-04-09-jueves.md
+```
+
+La especificación del formato local quedó documentada en:
+
+- `shared/docs/reporte_markdown_local.md`
 
 ## Estructura
 
@@ -77,6 +92,28 @@ notion-report-command/
 
 ## Instalación objetivo
 
+Ver guía completa en `docs/instalacion.md`.
+
+## Instalación inmediata mientras no esté publicada
+
+Si todavía no subiste `notion-report-command` a GitHub como repo propio, podés instalarlo desde el checkout local actual.
+
+### Linux
+
+```bash
+bash scripts/install-local.sh
+```
+
+### Windows
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-local.ps1
+```
+
+Esto sincroniza `/notion` en Claude/OpenCode y deja preparada la carpeta `reportes/` para el fallback Markdown.
+
+## Instalación objetivo cuando esté publicada
+
 ### Linux
 
 ```bash
@@ -90,4 +127,3 @@ irm https://raw.githubusercontent.com/relexsrl/notion-report-command/main/script
 ```
 
 > Nota: el repositorio es privado. El usuario debe tener acceso GitHub/SSH configurado.
-# notion-report-command
