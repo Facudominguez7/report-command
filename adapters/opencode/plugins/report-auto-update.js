@@ -7,7 +7,7 @@ import os from "node:os"
  * Dispara una actualización silenciosa del repositorio al iniciar una sesión.
  */
 export const ReportAutoUpdatePlugin = async ({ client }) => {
-  const directorioInstalacion = process.env.REPORT_COMMAND_HOME || process.env.NOTION_REPORT_HOME || path.join(os.homedir(), ".relex", "report-command")
+  const directorioInstalacion = process.env.REPORT_COMMAND_HOME || process.env.NOTION_REPORT_HOME || path.join(os.homedir(), ".rajadeacarubio", "report-command")
   const scriptActualizacion = path.join(directorioInstalacion, "scripts", process.platform === "win32" ? "update.ps1" : "update.sh")
 
   const ejecutarActualizacion = async () => {

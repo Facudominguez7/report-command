@@ -1,7 +1,7 @@
 param()
 
 $ErrorActionPreference = "Stop"
-$raiz = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/report-command" }
+$raiz = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".rajadeacarubio/report-command" }
 
 function Copiar-ArchivoAdministrado {
     param(

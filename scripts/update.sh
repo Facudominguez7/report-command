@@ -6,7 +6,7 @@ if [ "${1:-}" = "--silent" ]; then
   SILENCIOSO="true"
 fi
 
-DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
+DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.rajadeacarubio/report-command}}"
 
 registrar() {
   if [ "$SILENCIOSO" != "true" ]; then

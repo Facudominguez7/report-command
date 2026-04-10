@@ -19,7 +19,7 @@ irm https://raw.githubusercontent.com/Facudominguez7/report-command/main/scripts
 Notas:
 
 - Requiere `git`.
-- Instala el checkout administrado en `~/.relex/report-command`.
+- Instala el checkout administrado en `~/.rajadeacarubio/report-command`.
 
 ## Opción 2 — Desde checkout local
 

@@ -2,7 +2,7 @@ param()
 
 $ErrorActionPreference = "Stop"
 $repo = if ($env:REPO_SSH) { $env:REPO_SSH } else { "git@github.com:Facudominguez7/report-command.git" }
-$destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/report-command" }
+$destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".rajadeacarubio/report-command" }
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     throw "Falta git en el sistema."

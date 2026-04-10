@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_SSH="${REPO_SSH:-git@github.com:Facudominguez7/report-command.git}"
-DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
+DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.rajadeacarubio/report-command}}"
 
 crear_checkout() {
   mkdir -p "$(dirname "$DESTINO")"

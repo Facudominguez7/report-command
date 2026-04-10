@@ -3,7 +3,7 @@ param(
 )
 
 $ErrorActionPreference = "SilentlyContinue"
-$destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/report-command" }
+$destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".rajadeacarubio/report-command" }
 
 if (-not (Test-Path (Join-Path $destino ".git"))) {
     exit 0

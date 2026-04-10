@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RAIZ="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
+RAIZ="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.rajadeacarubio/report-command}}"
 
 crear_link_o_copia() {
   origen="$1"
