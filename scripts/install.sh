@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_SSH="${REPO_SSH:-git@github.com:relexsrl/report-command.git}"
+REPO_SSH="${REPO_SSH:-git@github.com:Facudominguez7/report-command.git}"
 DESTINO="${REPORT_COMMAND_HOME:-${NOTION_REPORT_HOME:-$HOME/.relex/report-command}}"
 
 crear_checkout() {

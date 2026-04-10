@@ -89,13 +89,13 @@ Ver guía completa en `docs/instalacion.md`.
 ### Linux
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/relexsrl/report-command/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Facudominguez7/report-command/main/scripts/install.sh | bash
 ```
 
 ### Windows
 
 ```powershell
-irm https://raw.githubusercontent.com/relexsrl/report-command/main/scripts/install.ps1 | iex
+irm https://raw.githubusercontent.com/Facudominguez7/report-command/main/scripts/install.ps1 | iex
 ```
 
 > Nota: el repositorio es público. Solo necesitás `git` y acceso a GitHub para descargarlo.

@@ -1,7 +1,7 @@
 param()
 
 $ErrorActionPreference = "Stop"
-$repo = if ($env:REPO_SSH) { $env:REPO_SSH } else { "git@github.com:relexsrl/report-command.git" }
+$repo = if ($env:REPO_SSH) { $env:REPO_SSH } else { "git@github.com:Facudominguez7/report-command.git" }
 $destino = if ($env:REPORT_COMMAND_HOME) { $env:REPORT_COMMAND_HOME } elseif ($env:NOTION_REPORT_HOME) { $env:NOTION_REPORT_HOME } else { Join-Path $HOME ".relex/report-command" }
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
