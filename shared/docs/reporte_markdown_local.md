@@ -103,8 +103,37 @@ Reglas:
 ```
 ```
 
-## Nota de estilo
+## Reglas de redacción obligatorias (aplican idénticamente a Notion y Markdown local)
 
-- El bloque `Status` debe estar en primera persona singular.
-- No mencionar SDD, apply, verify, batch ni términos internos del proceso.
-- Priorizar funcionalidad y valor para usuario/equipo por encima del detalle técnico en `Status`.
+### Regla de estilo para el Bloque 1 (Status)
+
+- El bloque `Status` debe estar en **primera persona singular**.
+- **SIEMPRE** usar formulaciones como: `hoy terminé`, `dejé`, `me quedó`, `estuve`, `avancé`, `corregí`.
+- **NUNCA** usar formulaciones impersonales o pasivas como: `se completó`, `se implementó`, `se corrigió`, `se dejó`, `se avanzó`.
+
+### Prohibiciones para el Bloque 1 (Status)
+
+- **NUNCA** mencionar nombres de modelos ORM, campos técnicos (one2many, many2many, Char, Float), nombres de archivos Python, XML ni rutas internas del proyecto.
+- **NUNCA** mencionar excepciones técnicas (ValidationError, UniqueViolation, IntegrityError), índices SQL, ni detalles de tests unitarios.
+- **NUNCA** usar argot técnico de framework (ACLS, record rules, computations, onchange, constraints) — traducir SIEMPRE a funcionalidad de negocio.
+- **NUNCA** listar artefactos de desarrollo (modelos, vistas, wizards, security) como logros — el logro es la **funcionalidad** que esos artefactos habilitan.
+
+**Ejemplo MALO**: "Se completó el batch 2: 4 modelos bridge, integración base one2many, ACLs y tests del lote."
+
+**Ejemplo BUENO**: "Hoy cerramos la configuración de regímenes especiales — ya se pueden dar de alta y vincular desde el formulario."
+
+### Prohibiciones para el Bloque 2 (Reporte Técnico)
+
+- **NUNCA** mencionar SDD, apply, verify, batch ni términos del proceso interno.
+- **SIEMPRE** reescribir en términos neutros de implementación o resultado.
+- **SIEMPRE** priorizar qué cambió en la funcionalidad, no cómo se organizó el proceso de trabajo.
+
+### Autoverificación obligatoria
+
+Antes de persistir el archivo, verificar:
+
+- [ ] El Status está en primera persona singular.
+- [ ] El Status no contiene fórmulas impersonales.
+- [ ] Ningún bloque menciona términos del proceso interno.
+- [ ] El Bloque 1 habla de funcionalidad, no de artefactos de código.
+- [ ] El Bloque 2 describe implementación sin exponer el proceso interno.
