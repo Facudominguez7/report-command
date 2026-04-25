@@ -23,6 +23,8 @@ limpiar_obsoletos() {
   rm -rf "$HOME/.claude/skills/report-weekly-report/"
   rm -rf "$HOME/.config/opencode/skills/report-weekly-report/"
   rm -rf "$HOME/.config/opencode/skills/notion-weekly-report/"
+  # OpenCode ya no instala la skill internal-weekly-report (solo /report)
+  rm -rf "$HOME/.config/opencode/skills/internal-weekly-report/"
   echo "Limpieza completada."
 }
 
@@ -31,7 +33,6 @@ main() {
   crear_link_o_copia "$RAIZ/adapters/claude/commands/report.md" "$HOME/.claude/commands/report.md"
   crear_link_o_copia "$RAIZ/shared/skills/internal-weekly-report/SKILL.md" "$HOME/.claude/skills/internal-weekly-report/SKILL.md"
   crear_link_o_copia "$RAIZ/adapters/opencode/commands/report.md" "$HOME/.config/opencode/commands/report.md"
-  crear_link_o_copia "$RAIZ/shared/skills/internal-weekly-report/SKILL.md" "$HOME/.config/opencode/skills/internal-weekly-report/SKILL.md"
   crear_link_o_copia "$RAIZ/adapters/opencode/plugins/report-auto-update.js" "$HOME/.config/opencode/plugins/report-auto-update.js"
 }
 

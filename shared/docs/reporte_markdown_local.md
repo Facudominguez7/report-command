@@ -1,10 +1,8 @@
-# Especificación de fallback Markdown local
+# Especificación compacta: fallback Markdown local
 
-## Objetivo
+## Persistencia
 
-Cuando `/report` no pueda usar Notion, debe dejar el reporte persistido localmente en un formato estable, versionable y fácil de revisar por el equipo.
-
-## Estructura de carpetas
+Cuando Notion no esté disponible, `/report` persiste en:
 
 ```text
 reportes/
@@ -13,28 +11,17 @@ reportes/
     └── {YYYY-MM-DD-dia}.md
 ```
 
-Ejemplo:
+## Reglas mínimas
 
-```text
-reportes/
-└── semana-2026-04-06_a_2026-04-12/
-    ├── README.md
-    └── 2026-04-09-jueves.md
-```
+- Preguntar y confirmar con el usuario la carpeta base antes de escribir.
+- Si ya existe `reportes/`, informar y confirmar si se reutiliza.
+- Crear carpeta semanal `semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}`.
+- Crear/reemplazar el archivo diario `YYYY-MM-DD-dia.md`.
+- No modificar días anteriores.
+- Crear `README.md` semanal si falta.
+- Confirmar siempre la ruta completa del archivo generado.
 
-## Reglas obligatorias
-
-- **Preguntar al usuario** en qué carpeta quiere guardar los reportes antes de escribir nada.
-- Si ya existe una carpeta `reportes/` en la ubicación propuesta, informar al usuario y preguntar si quiere seguir guardando ahí o elegir otra ubicación.
-- Si no existe, confirmar la ruta completa donde se va a crear y esperar aprobación.
-- Crear una carpeta por semana con formato `semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}` dentro de la ruta confirmada.
-- Crear un archivo por día con formato `YYYY-MM-DD-dia.md`.
-- Si el archivo del día ya existe, reemplazar su contenido completo.
-- No modificar archivos de días anteriores.
-- Crear `README.md` semanal si no existe.
-- **Siempre especificar** en la confirmación la ruta completa del archivo generado.
-
-## Template del README semanal
+## README semanal (base)
 
 ```markdown
 # Reportes semanales — Semana {{fecha_inicio}} a {{fecha_fin}}
@@ -47,13 +34,7 @@ reportes/
 - [{{Día}} {{DD/MM/YYYY}}]({{YYYY-MM-DD-dia}}.md)
 ```
 
-Reglas:
-
-- Agregar un bullet por día si todavía no existe.
-- No duplicar entradas del mismo día.
-- No borrar links previos.
-
-## Template del archivo diario
+## Archivo diario (base)
 
 ```markdown
 # Reporte diario — {{Día}} {{DD/MM/YYYY}}
@@ -65,79 +46,28 @@ Reglas:
 ## Status
 
 ### Hecho
-
-{{Qué funcionalidad quedó lista hoy, en primera persona y en términos de usuario/equipo.}}
+{{Funcionalidad terminada en primera persona singular.}}
 
 ### Pendiente
-
-{{Qué funcionalidad quedó pendiente, en primera persona y sin detallar artefactos internos.}}
+{{Funcionalidad pendiente en primera persona singular.}}
 
 ### Dudas
-
-{{Bloqueos, decisiones pendientes o `Sin dudas abiertas por ahora.`}}
+{{Bloqueos o `Sin dudas abiertas por ahora.`}}
 
 ## Reporte técnico
 
 ### Introducción
-
-{{Resumen técnico compacto del objetivo del día.}}
+{{Objetivo del día.}}
 
 ### Casos de uso
-
-- {{Caso de uso 1}}
-- {{Caso de uso 2}}
+- {{Caso 1}}
 
 ### Estructura
-
-- `{{archivo_o_modulo_1}}` — {{rol}}
-- `{{archivo_o_modulo_2}}` — {{rol}}
+- `{{archivo_o_modulo}}` — {{rol}}
 
 ### Comportamiento
-
-{{Descripción de validaciones, flujos y comportamiento implementado.}}
+{{Validaciones y lógica aplicada.}}
 
 ### Dudas abiertas
-
-{{Preguntas pendientes o `Sin dudas abiertas al cierre del día.`}}
-
-## Commit sugerido
-
-```text
-[ADD] relex_modulo: descripción corta
+{{Pendientes o `Sin dudas abiertas al cierre del día.`}}
 ```
-```
-
-## Reglas de redacción obligatorias (aplican idénticamente a Notion y Markdown local)
-
-### Regla de estilo para el Bloque 1 (Status)
-
-- El bloque `Status` debe estar en **primera persona singular**.
-- **SIEMPRE** usar formulaciones como: `hoy terminé`, `dejé`, `me quedó`, `estuve`, `avancé`, `corregí`.
-- **NUNCA** usar formulaciones impersonales o pasivas como: `se completó`, `se implementó`, `se corrigió`, `se dejó`, `se avanzó`.
-
-### Prohibiciones para el Bloque 1 (Status)
-
-- **NUNCA** mencionar nombres de modelos ORM, campos técnicos (one2many, many2many, Char, Float), nombres de archivos Python, XML ni rutas internas del proyecto.
-- **NUNCA** mencionar excepciones técnicas (ValidationError, UniqueViolation, IntegrityError), índices SQL, ni detalles de tests unitarios.
-- **NUNCA** usar argot técnico de framework (ACLS, record rules, computations, onchange, constraints) — traducir SIEMPRE a funcionalidad de negocio.
-- **NUNCA** listar artefactos de desarrollo (modelos, vistas, wizards, security) como logros — el logro es la **funcionalidad** que esos artefactos habilitan.
-
-**Ejemplo MALO**: "Se completó el batch 2: 4 modelos bridge, integración base one2many, ACLs y tests del lote."
-
-**Ejemplo BUENO**: "Hoy cerramos la configuración de regímenes especiales — ya se pueden dar de alta y vincular desde el formulario."
-
-### Prohibiciones para el Bloque 2 (Reporte Técnico)
-
-- **NUNCA** mencionar SDD, apply, verify, batch ni términos del proceso interno.
-- **SIEMPRE** reescribir en términos neutros de implementación o resultado.
-- **SIEMPRE** priorizar qué cambió en la funcionalidad, no cómo se organizó el proceso de trabajo.
-
-### Autoverificación obligatoria
-
-Antes de persistir el archivo, verificar:
-
-- [ ] El Status está en primera persona singular.
-- [ ] El Status no contiene fórmulas impersonales.
-- [ ] Ningún bloque menciona términos del proceso interno.
-- [ ] El Bloque 1 habla de funcionalidad, no de artefactos de código.
-- [ ] El Bloque 2 describe implementación sin exponer el proceso interno.

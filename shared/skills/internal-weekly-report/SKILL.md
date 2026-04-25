@@ -12,7 +12,7 @@ metadata:
 
 ## Cuándo Usar
 
-Únicamente cuando el orquestador delega la generación del reporte diario vía el comando `/report`. No debe invocarse manualmente como comando de usuario.
+Solo cuando el orquestador delega `/report`. No se invoca como comando manual de usuario.
 
 ---
 
@@ -21,68 +21,43 @@ metadata:
 - **Backend preferido**: página semanal de Notion usando MCP.
 - **Backend de fallback**: archivo Markdown local dentro del repositorio cuando Notion no está disponible o no está configurado.
 
-Las reglas de redacción de esta skill aplican **idénticamente** a ambos backends. No se relaja ninguna regla por usar Markdown local.
+Las reglas de redacción aplican **idénticamente** en ambos backends.
 
 ---
 
-## Reglas Críticas (DO NOT)
+## Guardrails Críticos
 
-- **NUNCA** crear una página por día — usar exclusivamente el formato de registro semanal.
-- **NUNCA** mencionar cambios en `AGENTS.md` en ningún bloque.
-- **NUNCA** inventar estado ni asumir trabajo no confirmado — si falta dato, marcá "pendiente de confirmación".
-- **NUNCA** incluir inventarios internos de carpetas ni detalle técnico fino.
-- **NUNCA** mencionar SDD, pipeline, batch, apply, propose, verify, explore, spec, design ni ningún término del proceso interno de desarrollo en ningún bloque.
-- **SIEMPRE** buscar primero en Engram las observaciones del día antes de redactar.
-- **SIEMPRE** mostrar al usuario las observaciones encontradas y preguntarle cuáles quiere usar antes de continuar.
-- **SIEMPRE** preguntar al usuario en qué carpeta ejecutar los comandos de Git/GitHub antes de correrlos.
-- **SIEMPRE** intentar Notion primero y hacer fallback automático a Markdown local si no está disponible.
-- **SIEMPRE** preguntar al usuario dónde guardar los reportes locales si el backend es Markdown, y confirmar la ubicación antes de escribir.
-- **SIEMPRE** especificar en la confirmación final la ruta exacta donde se guardó el reporte.
+- **NUNCA** crear una página por día (solo registro semanal).
+- **NUNCA** inventar estado: si falta dato, usar `pendiente de confirmación`.
+- **NUNCA** mencionar proceso interno (`SDD`, `apply`, `verify`, `batch`, etc.).
+- **NUNCA** mencionar cambios en `AGENTS.md`.
+- **SIEMPRE** recuperar contexto en Engram antes de redactar y validar con el usuario qué observaciones usar.
+- **SIEMPRE** preguntar carpeta/repo para comandos Git/GitHub antes de ejecutarlos.
+- **SIEMPRE** intentar Notion primero; si falla, fallback automático a Markdown local.
+- **SIEMPRE** confirmar ubicación exacta al finalizar (página Notion o ruta completa del archivo).
 - **NUNCA** mostrar el texto completo del reporte en el chat.
 
-### Regla obligatoria de estilo para el Bloque 1
+### Bloque 1 (Status): humanización obligatoria
 
-El **Status** debe quedar redactado en **primera persona singular**.
+El Status es **conversacional** y en **primera persona singular**.
 
-- **SIEMPRE** usar formulaciones como: `hoy terminé`, `dejé`, `me quedó`, `estuve`, `avancé`, `corregí`.
-- **NUNCA** usar formulaciones impersonales o pasivas como: `se completó`, `se implementó`, `se corrigió`, `se dejó`, `se avanzó`.
-- Si el texto se puede leer como changelog técnico y no como mensaje humano, está MAL.
+- **SIEMPRE** usar verbos como: `terminé`, `avancé`, `corregí`, `me quedó`, `estoy revisando`.
+- **NUNCA** usar frases impersonales/pasivas: `se completó`, `se implementó`, `se corrigió`, `se avanzó`.
+- **NUNCA** usar plural inclusivo: `cerramos`, `avanzamos`, `implementamos`, `corregimos`.
+- Si suena a changelog técnico en vez de mensaje humano, está mal: reescribir.
 
-### Prohibiciones específicas para el Bloque 1 (Status)
+### Bloque 1 (Status): foco funcional
 
-El Bloque 1 es un mensaje **humano y conversacional**. Estas prohibiciones son ABSOLUTAS:
+- Describir **qué puede hacer ahora el usuario/equipo** gracias a lo hecho hoy.
+- Incluir solo: **Hecho**, **Pendiente**, **Dudas/Bloqueos** (si existen).
+- No listar artefactos técnicos como logros (modelos, vistas, ACLs, tests, rutas, errores internos).
 
-- **NUNCA** mencionar nombres de modelos ORM, campos técnicos (one2many, many2many, Char, Float), nombres de archivos Python, XML ni rutas internas del proyecto.
-- **NUNCA** mencionar excepciones técnicas (ValidationError, UniqueViolation, IntegrityError), índices SQL, ni detalles de implementación de tests unitarios.
-- **NUNCA** usar argot técnico de framework (ACLS, record rules, computations, onchange, constraints) — traducir SIEMPRE a funcionalidad de negocio.
-- **NUNCA** listar artefactos de desarrollo (modelos, vistas, wizards, security) como si fueran logros — el logro es la **funcionalidad** que esos artefactos habilitan.
+### Bloque 2 (Reporte Técnico): límites
 
-**Ejemplo MALO** (lo que NO debe salir):
+- Puede ser técnico, pero **sin** terminología del proceso interno.
+- Priorizar implementación, estructura y comportamiento del módulo.
+- Cerrar con propuesta de nombre de commit estilo Odoo.
 
-> Jornada full en SDD apply para regímenes especiales. Se completó el batch 2: 4 modelos bridge, integración base one2many en modelos padre, pestañas/listados en vistas, ACLs y tests del lote. Hubo un fix de deduplicación SQL donde el test esperaba ValidationError pero el índice parcial lanza excepción SQL directa. Mañana: batch 3 (servicios domain end-to-end).
-
-**Ejemplo BUENO** (lo que SÍ debe salir):
-
-> Hoy cerramos la configuración de regímenes especiales y datos extra para partidas y parcelas — ya se pueden dar de alta y vincular desde el formulario. También corregimos un problema de duplicación que impedía registrar un mismo régimen dos veces. Queda pendiente unificar la interfaz entre lo nuevo y las pantallas existentes de datos extra. Mañana seguimos con los servicios de validez por fecha.
-
-La diferencia clave: el Bloque 1 describe **qué puede hacer el usuario ahora** que antes no podía, no **qué código se escribió**.
-
-### Prohibiciones específicas para el Bloque 2 (Reporte Técnico)
-
-El Bloque 2 puede ser técnico, pero NO debe filtrar terminología del proceso interno.
-
-- **NUNCA** mencionar SDD, pipeline, batch, apply, propose, verify, explore, spec, design, ni nombres de fases internas.
-- **NUNCA** usar frases como `se completó el ciclo SDD`, `pasó por verify`, `batch 2`, `fase apply`, `exploración SDD`.
-- **SIEMPRE** reescribir ese contexto en términos neutros de implementación o resultado, por ejemplo: `se completó la incorporación`, `se terminó la integración`, `se validó el comportamiento`, `se corrigió la regla de duplicados`.
-- **SIEMPRE** priorizar qué cambió en la funcionalidad o en la estructura técnica del módulo, no cómo se organizó el proceso de trabajo.
-
-**Ejemplo MALO**:
-
-> Se completó el ciclo SDD apply del batch 2 y luego pasó por verify con corrección de tests.
-
-**Ejemplo BUENO**:
-
-> Se completó la incorporación de asociaciones de regímenes especiales y datos extra en partidas y parcelas, junto con sus validaciones y cobertura de pruebas.
 
 ---
 
@@ -96,30 +71,20 @@ Esta tarea se delega SIEMPRE a un sub-agente efímero para aislar el contexto de
 
 ### Paso 1 — Recuperar Contexto del Día
 
-Antes de redactar nada, recuperar TODO el contexto disponible del día:
+1. `mem_context`.
+2. `mem_search` + `mem_get_observation` con keywords del día (incluyendo módulos detectados).
+3. Listar observaciones candidatas.
+4. **Preguntar al usuario cuáles usar**.
 
-1. `mem_context` → historial de sesión reciente
-2. `mem_search` con keywords del trabajo del día → `mem_get_observation` para contenido completo
-   - **OBLIGATORIO:** Extraer el nombre del módulo de los archivos modificados (ej: `relex_cat_base`, `relex_immovables_paperwork`) y usarlo como keyword principal en la búsqueda.
-   - Si hay múltiples módulos, hacer una búsqueda por módulo.
-3. Armar una lista breve de observaciones candidatas para el reporte
-4. **PREGUNTAR al usuario cuáles quiere usar** antes de continuar
-
-No seguir con la redacción ni con la persistencia final hasta que el usuario responda.
+No redactar ni persistir hasta que el usuario responda.
 
 ### Paso 1.5 — Confirmar Carpetas de Trabajo
 
-Antes de correr cualquier comando o persistir nada:
-
-1. **PREGUNTAR al usuario** en qué carpeta o repositorio quiere que se ejecuten los comandos de Git/GitHub.
-2. **PREGUNTAR al usuario** en qué carpeta quiere que se guarden los reportes locales (solo si el backend es Markdown).
-   - Si ya existe una carpeta `reportes/` en algún lugar propuesto, informar que existe y preguntar si quiere seguir guardando ahí o elegir otra ubicación.
-   - Si no existe, confirmar la ruta donde se va a crear.
-3. Esperar las respuestas del usuario antes de continuar.
+- Preguntar carpeta/repo para comandos Git/GitHub.
+- Si backend Markdown: preguntar carpeta de guardado; si existe `reportes/`, confirmar si seguir ahí o cambiar.
+- Esperar respuesta antes de continuar.
 
 ### Paso 2 — Relevamiento Complementario
-
-Después de que el usuario elija qué observaciones usar y confirme la carpeta:
 
 1. `git status` + `git diff --name-only HEAD` + `git branch` + `git log --oneline --since=today`
 2. De la salida de git, extraer: nombre(s) de módulo, entidades de negocio afectadas y usarlas como keywords en `mem_search`
@@ -131,13 +96,13 @@ Layout **fijo y obligatorio** con exactamente DOS bloques en este orden:
 
 #### Bloque 1 — Status (conversacional)
 
-- **Tono**: español rioplatense, primera persona, breve, como si le contaras a un compañero de equipo qué hiciste hoy.
-- **Contenido**: exactamente TRES cosas en este orden:
+- **Tono**: español rioplatense, breve, primera persona singular.
+- **Contenido** (en orden):
   1. **Qué funcionalidad se completó hoy** — en términos de lo que el usuario puede hacer ahora (no código escrito).
   2. **Qué queda pendiente** — en términos de funcionalidad que falta, no de tareas técnicas.
   3. **Dudas o bloqueos** — si los hay; si no, simplemente no los mencionás.
 - **Presentación visual**: tabla simple corta con columnas `Hecho | Pendiente | Dudas` si el backend lo soporta; si no, lista compacta con ✅ 🔄 ❓.
-- **Chequeo obligatorio**: antes de publicar, releer el párrafo y confirmar que todos los verbos principales estén en primera persona singular.
+- **Chequeo obligatorio**: releer y confirmar que no haya impersonales ni plural (`cerramos`, `avanzamos`, etc.).
 
 #### Bloque 2 — Reporte Técnico (formal)
 
@@ -175,9 +140,7 @@ Secciones obligatorias **en este orden**:
 **Si Notion no está disponible**:
 - Usar la carpeta confirmada por el usuario en el Paso 1.5.
 - Si el usuario no especificó una carpeta, proponer la raíz del repositorio y confirmar antes de escribir.
-- Verificar si ya existe una carpeta `reportes/` en la ubicación elegida.
-  - Si existe: informar al usuario y preguntar si quiere seguir usando esa carpeta o elegir otra.
-  - Si no existe: confirmar la ruta completa donde se va a crear y esperar aprobación.
+- Si existe una carpeta `reportes/`, informar y confirmar si seguir ahí o cambiar.
 - Crear la carpeta `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/` si no existe.
 - Crear `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/README.md` si no existe y agregar el link del día.
 - Crear o actualizar el archivo `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/{YYYY-MM-DD-dia}.md`.
@@ -190,7 +153,8 @@ Secciones obligatorias **en este orden**:
 Antes de escribir en cualquier backend (Notion o Markdown local), validar esta checklist:
 
 - [ ] El **Status** está redactado en **primera persona singular**.
-- [ ] El **Status** no contiene `se completó`, `se implementó`, `se corrigió` ni otras fórmulas impersonales.
+- [ ] El **Status** no contiene fórmulas impersonales (`se completó`, `se implementó`, `se corrigió`, etc.).
+- [ ] El **Status** no contiene plural de equipo (`cerramos`, `avanzamos`, `implementamos`, etc.).
 - [ ] Ningún bloque menciona `SDD`, `apply`, `verify`, `explore`, `spec`, `design`, `batch` o términos equivalentes.
 - [ ] El **Bloque 1** habla de funcionalidad para usuario o equipo, no de artefactos de código.
 - [ ] El **Bloque 2** describe implementación y comportamiento del módulo sin exponer el proceso interno de trabajo.

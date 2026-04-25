@@ -22,10 +22,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue (Join-Path $HOME ".config/openc
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $HOME ".claude/skills/report-weekly-report")
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $HOME ".config/opencode/skills/report-weekly-report")
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $HOME ".config/opencode/skills/notion-weekly-report")
+# OpenCode ya no instala la skill internal-weekly-report (solo /report)
+Remove-Item -Recurse -Force -ErrorAction SilentlyContinue (Join-Path $HOME ".config/opencode/skills/internal-weekly-report")
 Write-Host "Limpieza completada."
 
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/claude/commands/report.md") (Join-Path $HOME ".claude/commands/report.md")
 Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/internal-weekly-report/SKILL.md") (Join-Path $HOME ".claude/skills/internal-weekly-report/SKILL.md")
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/opencode/commands/report.md") (Join-Path $HOME ".config/opencode/commands/report.md")
-Copiar-ArchivoAdministrado (Join-Path $raiz "shared/skills/internal-weekly-report/SKILL.md") (Join-Path $HOME ".config/opencode/skills/internal-weekly-report/SKILL.md")
 Copiar-ArchivoAdministrado (Join-Path $raiz "adapters/opencode/plugins/report-auto-update.js") (Join-Path $HOME ".config/opencode/plugins/report-auto-update.js")

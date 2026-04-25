@@ -86,6 +86,32 @@ report-command/
 
 Ver guía completa en `docs/instalacion.md`.
 
+## Requisitos para que `/report` funcione
+
+### Requisitos mínimos
+
+- **Git instalado** (requerido por los scripts `install`/`update`).
+- **Acceso a GitHub** para descargar/actualizar el repositorio (`raw.githubusercontent.com` y `github.com`).
+- **Uno de estos clientes instalado**:
+  - **Claude Code** (usa `~/.claude/commands/report.md` y su skill interna), o
+  - **OpenCode** (usa `~/.config/opencode/commands/report.md` + plugin).
+- **Permisos de escritura** en el home del usuario para que los scripts sincronicen archivos.
+
+### Requisitos por sistema operativo
+
+- **Linux/macOS**:
+  - `bash`
+  - `curl` (si instalás con one-liner)
+- **Windows**:
+  - **PowerShell 5.1+**
+  - `git` en `PATH`
+  - política de ejecución que permita correr el script (el instalador usa `-ExecutionPolicy Bypass`)
+
+### Requisito opcional (Notion)
+
+- Si querés persistir en Notion, necesitás MCP de Notion configurado en tu cliente.
+- Si Notion no está disponible, `/report` funciona igual usando fallback local en `reportes/`.
+
 ### Linux
 
 ```bash
