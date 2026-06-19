@@ -1,8 +1,8 @@
-# Especificación compacta: fallback Markdown local
+# Especificación compacta: reporte Markdown local
 
 ## Persistencia
 
-Cuando Notion no esté disponible, `/report` persiste en:
+El comando `/report` persiste el reporte en:
 
 ```text
 reportes/
@@ -27,7 +27,7 @@ reportes/
 # Reportes semanales — Semana {{fecha_inicio}} a {{fecha_fin}}
 
 - Rango: {{fecha_inicio}} a {{fecha_fin}}
-- Backend: Markdown local (fallback de /report)
+- Backend: Markdown local
 
 ## Días registrados
 

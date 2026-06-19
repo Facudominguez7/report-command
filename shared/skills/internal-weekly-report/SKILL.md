@@ -1,13 +1,14 @@
 ---
 name: internal-weekly-report
 description: >
-  Genera o actualiza el reporte diario en la página semanal de Notion y, si Notion no está disponible, lo guarda en Markdown local.
-  Trigger: uso interno del comando "/report".
-  Aplica reglas estrictas de redacción a ambos backends.
+  Genera o actualiza el reporte diario de trabajo como archivo Markdown local,
+  agrupado en una carpeta semanal. Pregunta siempre al usuario en qué carpeta
+  guardar el reporte antes de escribir. Aplica reglas estrictas de redacción.
+  Trigger: uso interno del comando "/report". No invocar manualmente.
 license: Apache-2.0
 metadata:
   author: relex
-  version: "2.3.0"
+  version: "3.0.0"
 ---
 
 ## Cuándo Usar
@@ -16,12 +17,9 @@ Solo cuando el orquestador delega `/report`. No se invoca como comando manual de
 
 ---
 
-## Backend Dual
+## Backend
 
-- **Backend preferido**: página semanal de Notion usando MCP.
-- **Backend de fallback**: archivo Markdown local dentro del repositorio cuando Notion no está disponible o no está configurado.
-
-Las reglas de redacción aplican **idénticamente** en ambos backends.
+El reporte se persiste **siempre** como archivo Markdown local dentro de una carpeta semanal. No hay integración con Notion ni con ningún otro servicio externo. Antes de escribir, **SIEMPRE** preguntar al usuario en qué carpeta guardar el reporte.
 
 ---
 
@@ -33,8 +31,8 @@ Las reglas de redacción aplican **idénticamente** en ambos backends.
 - **NUNCA** mencionar cambios en `AGENTS.md`.
 - **SIEMPRE** recuperar contexto en Engram antes de redactar y validar con el usuario qué observaciones usar.
 - **SIEMPRE** preguntar carpeta/repo para comandos Git/GitHub antes de ejecutarlos.
-- **SIEMPRE** intentar Notion primero; si falla, fallback automático a Markdown local.
-- **SIEMPRE** confirmar ubicación exacta al finalizar (página Notion o ruta completa del archivo).
+- **SIEMPRE** preguntar al usuario en qué carpeta guardar el reporte y confirmar la ubicación antes de escribir.
+- **SIEMPRE** confirmar la ruta completa del archivo al finalizar.
 - **NUNCA** mostrar el texto completo del reporte en el chat.
 
 ### Bloque 1 (Status): humanización obligatoria
@@ -81,7 +79,7 @@ No redactar ni persistir hasta que el usuario responda.
 ### Paso 1.5 — Confirmar Carpetas de Trabajo
 
 - Preguntar carpeta/repo para comandos Git/GitHub.
-- Si backend Markdown: preguntar carpeta de guardado; si existe `reportes/`, confirmar si seguir ahí o cambiar.
+- Preguntar **siempre** en qué carpeta guardar el reporte; si existe `reportes/`, confirmar si seguir ahí o cambiar.
 - Esperar respuesta antes de continuar.
 
 ### Paso 2 — Relevamiento Complementario
@@ -121,24 +119,10 @@ Secciones obligatorias **en este orden**:
 - Diagrama Mermaid como **bloque de código** si aporta claridad
 - Al final del Bloque 2, proponer un **nombre de commit con estilo Odoo** acorde al trabajo del día.
 
-### Paso 4 — Detectar Backend Disponible y Persistir
+### Paso 4 — Persistir el Reporte en Markdown Local
 
-1. Intentar usar primero una herramienta MCP de Notion disponible en la sesión.
-2. Si la herramienta existe y responde, considerá **Notion disponible**.
-3. Si la herramienta no existe, falla por configuración o devuelve error de acceso, considerá **Notion no disponible** y seguí con Markdown local.
-4. No interrumpir la sesión por ausencia de Notion.
+Usar la carpeta confirmada por el usuario en el Paso 1.5. No escribir nada hasta tener esa confirmación.
 
-**Si Notion está disponible**:
-- Buscar la página semanal vigente en Notion.
-- Si no existe, crear nueva página con título tipo `"Reporte Semanal — Semana del DD/MM/AAAA"`.
-- Agregar o reemplazar la entrada del día sin duplicar fechas y sin modificar días anteriores.
-- Agregar un encabezado explícito con el día y fecha en español antes de los dos bloques:
-  ```markdown
-  ## Jueves 10/04/2026
-  ```
-
-**Si Notion no está disponible**:
-- Usar la carpeta confirmada por el usuario en el Paso 1.5.
 - Si el usuario no especificó una carpeta, proponer la raíz del repositorio y confirmar antes de escribir.
 - Si existe una carpeta `reportes/`, informar y confirmar si seguir ahí o cambiar.
 - Crear la carpeta `{ruta_elegida}/reportes/semana-{YYYY-MM-DD}_a_{YYYY-MM-DD}/` si no existe.
@@ -150,7 +134,7 @@ Secciones obligatorias **en este orden**:
 
 ### Paso 4.5 — Autoverificación de Redacción (OBLIGATORIO)
 
-Antes de escribir en cualquier backend (Notion o Markdown local), validar esta checklist:
+Antes de escribir el archivo Markdown local, validar esta checklist:
 
 - [ ] El **Status** está redactado en **primera persona singular**.
 - [ ] El **Status** no contiene fórmulas impersonales (`se completó`, `se implementó`, `se corrigió`, etc.).
@@ -165,10 +149,7 @@ Si cualquiera de estos checks falla, **rehacer el texto antes de persistir**.
 
 El sub-agente confirma al orquestador que la actualización se realizó correctamente.
 
-**No devolver el texto completo en el chat** — solo la confirmación de éxito especificando **siempre** la ubicación exacta:
-
-- Si se usó Notion: indicar el título o URL de la página semanal.
-- Si se usó Markdown local: indicar la ruta completa del archivo generado (ej: `/home/usuario/proyecto/reportes/semana-2026-04-06_a_2026-04-12/2026-04-10-jueves.md`).
+**No devolver el texto completo en el chat** — solo la confirmación de éxito especificando **siempre** la ruta completa del archivo generado (ej: `/home/usuario/proyecto/reportes/semana-2026-04-06_a_2026-04-12/2026-04-10-jueves.md`).
 
 ---
 
@@ -178,13 +159,12 @@ El sub-agente confirma al orquestador que la actualización se realizó correcta
 |---|---|
 | `mem_context` / `mem_search` / `mem_get_observation` | Recuperar contexto de sesión y Engram |
 | `git status` / `git diff` / `git log` | Identificar archivos modificados y commits del día |
-| MCP Notion | Buscar, crear y actualizar páginas (backend preferido) |
-| Escritura de archivos | Crear/archivar Markdown local (backend de fallback) |
+| Escritura de archivos | Crear/actualizar el reporte Markdown local |
 
 ---
 
 ## Referencias
 
-- `shared/docs/reporte_diario_template.md` — Plantilla de reporte diario (aplica a ambos backends)
-- `shared/docs/reporte_markdown_local.md` — Especificación del fallback local
+- `shared/docs/reporte_diario_template.md` — Plantilla de reporte diario
+- `shared/docs/reporte_markdown_local.md` — Especificación del formato Markdown local
 - `shared/prompts/opencode/internal-weekly-report.md` — Prompt del sub-agente para OpenCode

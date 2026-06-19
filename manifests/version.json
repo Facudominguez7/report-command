@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "1.0.0",
   "canal": "main",
-  "descripcion": "Backend dual Notion + fallback Markdown local para report-command"
+  "descripcion": "Reporte diario en Markdown local para report-command (sin Notion)"
 }

@@ -43,9 +43,9 @@ powershell -ExecutionPolicy Bypass -File .\scripts\install-local.ps1
 
 Qué hace:
 
-- usa el checkout local actual como `NOTION_REPORT_HOME`,
+- usa el checkout local actual como `REPORT_COMMAND_HOME`,
 - sincroniza el comando `/report` en Claude Code y OpenCode,
-- deja preparada la carpeta `reportes/` para el fallback Markdown.
+- deja preparada la carpeta `reportes/` para el reporte Markdown.
 
 ## Qué se instala
 
@@ -66,8 +66,8 @@ Después de instalar:
 
 1. Abrí Claude Code u OpenCode.
 2. Ejecutá `/report`.
-3. Si Notion está configurado, debe usar la página semanal.
-4. Si Notion no está configurado, debe usar fallback local en:
+3. Debe preguntarte en qué carpeta guardar el reporte.
+4. Debe persistir el reporte como archivo Markdown local en:
 
 ```text
 reportes/semana-YYYY-MM-DD_a_YYYY-MM-DD/

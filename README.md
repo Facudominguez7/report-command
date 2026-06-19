@@ -11,12 +11,9 @@ Este repositorio concentra una única fuente de verdad para:
 - los adaptadores para Claude Code y OpenCode,
 - los scripts de instalación y actualización automática.
 
-El comando usa una estrategia de **backend dual**:
+El comando persiste el reporte **siempre como archivo Markdown local** dentro de `reportes/`, agrupado por carpeta semanal. Antes de escribir, pregunta siempre al usuario en qué carpeta guardar el reporte.
 
-- **Preferido**: actualiza la página semanal en Notion cuando el MCP está disponible.
-- **Fallback**: genera un archivo Markdown local dentro de `reportes/` cuando Notion no está configurado o no responde.
-
-La meta es que cualquier integrante del equipo pueda instalarlo con **un solo comando** y obtener el mismo comportamiento funcional validado en la máquina de referencia, sin quedar bloqueado si todavía no configuró Notion.
+La meta es que cualquier integrante del equipo pueda instalarlo con **un solo comando** y obtener el mismo comportamiento funcional validado en la máquina de referencia.
 
 ## Alcance del scaffold
 
@@ -31,25 +28,9 @@ Este scaffold ya incluye:
 
 Además incluye instalación desde checkout local para usar la herramienta antes de publicarla como repositorio independiente.
 
-## Fallback local a Markdown
+## Reporte Markdown local
 
-Cuando Notion no está disponible, `/report` debe persistir el reporte en la raíz del repo con esta estructura:
-
-```text
-reportes/
-└── semana-2026-04-06_a_2026-04-12/
-    └── 2026-04-09-jueves.md
-```
-
-Reglas del fallback:
-
-- un archivo por día,
-- agrupado por carpeta semanal con rango fecha a fecha,
-- un `README.md` por semana con links a los días cargados,
-- si el archivo del día ya existe, se reemplaza completo,
-- no se modifican archivos de días anteriores.
-
-Formato de ejemplo:
+`/report` pregunta en qué carpeta guardar el reporte y lo persiste con esta estructura:
 
 ```text
 reportes/
@@ -57,6 +38,15 @@ reportes/
     ├── README.md
     └── 2026-04-09-jueves.md
 ```
+
+Reglas:
+
+- pregunta siempre en qué carpeta guardar antes de escribir,
+- un archivo por día,
+- agrupado por carpeta semanal con rango fecha a fecha,
+- un `README.md` por semana con links a los días cargados,
+- si el archivo del día ya existe, se reemplaza completo,
+- no se modifican archivos de días anteriores.
 
 La especificación del formato local quedó documentada en:
 
@@ -106,11 +96,6 @@ Ver guía completa en `docs/instalacion.md`.
   - **PowerShell 5.1+**
   - `git` en `PATH`
   - política de ejecución que permita correr el script (el instalador usa `-ExecutionPolicy Bypass`)
-
-### Requisito opcional (Notion)
-
-- Si querés persistir en Notion, necesitás MCP de Notion configurado en tu cliente.
-- Si Notion no está disponible, `/report` funciona igual usando fallback local en `reportes/`.
 
 ### Linux
 

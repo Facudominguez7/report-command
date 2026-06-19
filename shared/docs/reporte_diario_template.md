@@ -1,6 +1,6 @@
-# Plantilla compacta: Reporte Diario (Notion o Markdown local)
+# Plantilla compacta: Reporte Diario (Markdown local)
 
-Aplicar esta estructura en ambos backends.
+Aplicar esta estructura en el reporte Markdown local.
 
 ## {{Día}} {{DD/MM/AAAA}}
 
